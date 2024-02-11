@@ -53,6 +53,10 @@ if __name__ == "__main__":
     mlflow.sklearn.autolog()
     #mlflow.autolog()
 
-    with mlflow.start_run(run_name = os.environ['GIT_COMMIT_MSG']):
-        # your training code goes here
-        run_training()
+    mlflow.start_run(run_name = os.environ['GIT_COMMIT_MSG'])
+    
+    # your training code goes here
+    run_training()
+    
+    mlflow.end_run()
+    
