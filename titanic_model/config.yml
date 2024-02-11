@@ -61,7 +61,7 @@ title_mappings:
 test_size: 0.22
 
 # to set the random seed
-random_state: 123
+random_state: 42
 # alogrithm parameters
 n_estimators: 120
 max_depth: 3
