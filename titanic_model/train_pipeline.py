@@ -13,21 +13,21 @@ from titanic_model.pipeline import titanic_pipe
 from titanic_model.processing.data_manager import load_dataset, save_pipeline
 
 
-import mlflow
-import os
-from getpass import getpass
-os.environ['MLFLOW_TRACKING_USERNAME'] = 'yrajm1997'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = getpass("Enter your DagsHub access token: ")
-mlflow.set_tracking_uri("https://dagshub.com/yrajm1997/titanic_app.mlflow")
-mlflow.set_experiment("Titanic Survival Prediction")
-mlflow.sklearn.autolog()
-
-
 def run_training() -> None:
     
     """
     Train the model.
     """
+    
+    import mlflow
+    import os
+    #from getpass import getpass
+    #os.environ['MLFLOW_TRACKING_USERNAME'] = 'yrajm1997'
+    #os.environ['MLFLOW_TRACKING_PASSWORD'] = getpass("Enter your DagsHub access token: ")
+    mlflow.set_tracking_uri("https://dagshub.com/yrajm1997/titanic_app.mlflow")
+    mlflow.set_experiment("Titanic Survival Prediction")
+    mlflow.sklearn.autolog()
+    
 
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
