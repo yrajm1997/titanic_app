@@ -22,6 +22,7 @@ jobs:
       env:
         MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
         MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
+        GIT_COMMIT_MSG: ${{ github.event.head_commit.message }}
       run: python titanic_model/train_pipeline.py
     - uses: actions/upload-artifact@v2
       with:

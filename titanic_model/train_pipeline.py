@@ -18,16 +18,6 @@ def run_training() -> None:
     """
     Train the model.
     """
-    
-    import mlflow
-    import os
-    #from getpass import getpass
-    #os.environ['MLFLOW_TRACKING_USERNAME'] = 'yrajm1997'
-    #os.environ['MLFLOW_TRACKING_PASSWORD'] = getpass("Enter your DagsHub access token: ")
-    mlflow.set_tracking_uri("https://dagshub.com/yrajm1997/titanic_app.mlflow")
-    mlflow.set_experiment("Titanic Survival Prediction")
-    mlflow.sklearn.autolog()
-    
 
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
@@ -52,4 +42,17 @@ def run_training() -> None:
     # printing the score
     
 if __name__ == "__main__":
-    run_training()
+    
+    import mlflow
+    import os
+    #from getpass import getpass
+    #os.environ['MLFLOW_TRACKING_USERNAME'] = 'yrajm1997'
+    #os.environ['MLFLOW_TRACKING_PASSWORD'] = getpass("Enter your DagsHub access token: ")
+    mlflow.set_tracking_uri("https://dagshub.com/yrajm1997/titanic_app.mlflow")
+    mlflow.set_experiment("Titanic Survival Prediction")
+    mlflow.sklearn.autolog()
+    #mlflow.autolog()
+
+    with mlflow.start_run(os.environ['GIT_COMMIT_MSG']):
+        # your training code goes here
+        run_training()
